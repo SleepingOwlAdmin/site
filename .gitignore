@@ -1,0 +1,9 @@
+/vendor
+/public/api
+/public/page-cache
+/public/storage
+/node_modules
+/.idea
+.env
+.DS_Store
+Thumbs.db
