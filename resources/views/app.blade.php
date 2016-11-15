@@ -3,10 +3,9 @@
 <head>
 	<meta charset="utf-8">
 	<title>{{ isset($title) ? $title . ' - ' : null }}SleepingOwl - Админ панель для Laravel</title>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<meta name="author" content="Taylor Otwell">
-	<meta name="description" content="Laravel - The PHP framework for web artisans.">
-	<meta name="keywords" content="laravel, php, framework, web, artisans, taylor otwell">
+	<meta name="author" content="butschster">
+	<meta name="description" content="SleepingOwl - Админ панель для Laravel.">
+	<meta name="keywords" content="laravel, php, framework, admin">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	@if (isset($canonical))
 		<link rel="canonical" href="{{ url($canonical) }}" />
@@ -14,8 +13,8 @@
 
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&amp;subset=cyrillic" rel="stylesheet">
 	<link rel="stylesheet" href="{{ elixir('assets/css/laravel.css') }}">
-	<link rel="apple-touch-icon" href="/favicon.png">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
+	<link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body class="@yield('body-class', 'docs') language-php">
 
