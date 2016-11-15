@@ -15,24 +15,17 @@
 	</ul>
 
 	<div class="slide-docs-nav">
-		<h2>Documentation</h2>
+		<h2>Документация</h2>
 		{!! $index !!}
 	</div>
 
 </nav>
 
 <div class="docs-wrapper container">
-
 	<section class="sidebar">
+		<h3>Документация</h3>
 		{!! $index !!}
 	</section>
-
-	{{-- <div id="search">
-		<div id="search-wrapper">
-			<input placeholder="" type="text" id="search-input" />
-			<i id="cross" class="icon"></i>
-		</div>
-	</div> --}}
 
 	<article>
 		{!! $content !!}

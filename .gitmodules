@@ -1,0 +1,3 @@
+[submodule "resources/docs"]
+	path = resources/docs
+	url = https://github.com/LaravelRUS/SleepingOwlAdmin-docs

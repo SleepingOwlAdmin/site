@@ -68,8 +68,8 @@ class DocsController extends Controller
         }
 
         return view('docs', [
-            'title' => count($title) ? utf8_decode($title->text()) : null,
-            'index' => $this->docs->getIndex().' | Документация',
+            'title' => count($title) ? utf8_decode($title->text()).' | Документация' : null,
+            'index' => $this->docs->getIndex(),
             'content' => $content,
             'currentSection' => $section,
             'canonical' => $canonical,
