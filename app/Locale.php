@@ -8,9 +8,9 @@ use Illuminate\Translation\Translator;
 class Locale implements LocaleInterface
 {
     /**
-     * @var string
+     * @var Translator
      */
-    protected $currentLocale;
+    protected $tranlator;
 
     /**
      * Locale constructor.
@@ -19,7 +19,7 @@ class Locale implements LocaleInterface
      */
     public function __construct(Translator $translator)
     {
-        $this->currentLocale = $translator->getLocale();
+        $this->tranlator = $translator;
     }
 
     /**
@@ -35,7 +35,7 @@ class Locale implements LocaleInterface
      */
     public function getCurrent()
     {
-        return $this->currentLocale;
+        return $this->tranlator->getLocale();
     }
 
     /**
@@ -43,11 +43,11 @@ class Locale implements LocaleInterface
      */
     public function getDocsLocalePrefix()
     {
-        if ($this->currentLocale == 'ru') {
+        if ($this->getCurrent() == 'ru') {
             return '';
         }
 
-        return  $this->currentLocale.'/';
+        return  $this->getCurrent().'/';
     }
 
     /**
@@ -71,19 +71,21 @@ class Locale implements LocaleInterface
      */
     protected function buildLocalHost($locale)
     {
-        if ($locale == 'ru') {
-            return url()->current();
-        }
-
         $request = request();
 
         $host = $request->getHttpHost();
         $segments = explode('.', $host);
 
-        if (count($segments) > 2 && in_array($segments[0], $this->getAvailableLocales())) {
-            $segments[0] = $locale;
+        if ($locale == 'ru') {
+            if (count($segments) == 3) {
+                array_shift($segments);
+            }
         } else {
-            array_unshift($segments, $locale);
+            if (count($segments) > 2 && in_array($segments[0], $this->getAvailableLocales())) {
+                $segments[0] = $locale;
+            } else {
+                array_unshift($segments, $locale);
+            }
         }
 
         return url($request->getScheme().'://'.implode('.', $segments).$request->getPathInfo());
