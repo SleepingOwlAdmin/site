@@ -10,12 +10,12 @@
 	</div>
 
 	<ul class="slide-main-nav">
-		<li><a href="/">Home</a></li>
+		<li><a href="/">@lang('site.menu.home')</a></li>
 		@include('partials.main-nav')
 	</ul>
 
 	<div class="slide-docs-nav">
-		<h2>Документация</h2>
+		<h2>@lang('site.menu.docs')</h2>
 		{!! $index !!}
 	</div>
 
@@ -23,7 +23,7 @@
 
 <div class="docs-wrapper container">
 	<section class="sidebar">
-		<h3>Документация</h3>
+		<h3>@lang('site.menu.docs')</h3>
 		{!! $index !!}
 	</section>
 

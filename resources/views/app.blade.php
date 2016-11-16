@@ -10,11 +10,12 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>{{ isset($title) ? $title . ' - ' : null }}SleepingOwl - Админ панель для Laravel</title>
+	<title>{{ isset($title) ? $title . ' - ' : null }} @lang('site.title')</title>
 	<meta name="author" content="butschster">
-	<meta name="description" content="SleepingOwl - Админ панель для Laravel.">
+	<meta name="description" content="@lang('site.title')">
 	<meta name="keywords" content="laravel, php, framework, admin">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+
 	@if (isset($canonical))
 		<link rel="canonical" href="{{ url($canonical) }}" />
 	@endif
@@ -24,17 +25,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
 	<link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
+
 <body class="@yield('body-class', 'docs') language-php">
-	<script>
-	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-	  ga('create', 'UA-47325178-4', 'auto');
-	  ga('send', 'pageview');
-
-	</script>
 	<span class="overlay"></span>
 
 	<nav class="main">
@@ -45,7 +37,7 @@
 
         <div class="search nav-block">
             {!! svg('search') !!}
-            <input placeholder="Поиск по документации" type="text" v-model="search" id="search-input" v-on:blur="reset" />
+            <input placeholder="@lang('site.search.placeholder')" type="text" v-model="search" id="search-input" v-on:blur="reset" />
         </div>
 
 		<ul class="main-nav" v-if="! search">
@@ -66,15 +58,26 @@
 	</footer>
 
 	<script>
-		var algolia_app_id      = '<?php echo Config::get('algolia.connections.main.id', false); ?>';
-		var algolia_search_key  = '<?php echo Config::get('algolia.connections.main.search_key', false); ?>';
+		var algolia_app_id      = '<?php echo config('algolia.connections.main.id', false); ?>';
+		var algolia_search_key  = '<?php echo config('algolia.connections.main.search_key', false); ?>';
 	</script>
 
 	@include('partials.algolia_template')
 
 	<script src="{{ elixir('assets/js/laravel.js') }}"></script>
 
-	<!-- Yandex.Metrika counter -->
+
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+				(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-47325178-4', 'auto');
+		ga('send', 'pageview');
+
+	</script>
+
 	<script type="text/javascript">
 		(function (d, w, c) {
 			(w[c] = w[c] || []).push(function() {
@@ -102,6 +105,5 @@
 		})(document, window, "yandex_metrika_callbacks");
 	</script>
 	<noscript><div><img src="https://mc.yandex.ru/watch/40925319" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-	<!-- /Yandex.Metrika counter -->
 </body>
 </html>

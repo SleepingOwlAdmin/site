@@ -86,7 +86,7 @@ class Indexer
         $this->files = $files;
         $this->client = $client;
         $this->markdown = $markdown;
-        $this->index = $client->initIndex(static::$index_name);
+        $this->index = $client->initIndex(static::$index_name.'_tmp');
     }
 
     /**
@@ -96,7 +96,10 @@ class Indexer
      */
     public function indexAllDocuments()
     {
-        $this->indexAllDocumentsForVersion();
+        foreach (config('app.available_locales', ['ru']) as $locale) {
+            $this->indexAllDocumentsForVersion($locale);
+        }
+
         $this->setSettings();
 
         $this->client->moveIndex($this->index->indexName, static::$index_name);
@@ -105,15 +108,19 @@ class Indexer
     /**
      * Index all documentation for a given version.
      *
-     * @return void
+     * @param string $locale
      */
-    public function indexAllDocumentsForVersion()
+    public function indexAllDocumentsForVersion($locale)
     {
-        $versionPath = base_path('resources/docs/');
-
-        foreach ($this->files->files($versionPath) as $path) {
+        if($locale != 'ru') {
+            $localPath = base_path('resources/docs/'.$locale.'/');
+        } else {
+            $localPath = base_path('resources/docs/');
+        }
+        
+        foreach ($this->files->files($localPath) as $path) {
             if (! in_array(basename($path, '.md'), $this->noIndex)) {
-                $this->indexDocument($path);
+                $this->indexDocument($locale, $path);
             }
         }
     }
@@ -121,11 +128,12 @@ class Indexer
     /**
      * Index a given document in Algolia
      *
+     * @param string $locale
      * @param string $path
      */
-    public function indexDocument($path)
+    public function indexDocument($locale, $path)
     {
-        $markdown = Documentation::replaceLinks($this->files->get($path));
+        $markdown = Documentation::replaceLinks($locale, $this->files->get($path));
 
         $slug = basename($path, '.md');
 
@@ -153,7 +161,7 @@ class Indexer
 
             if (isset($bloc['type']) && $bloc['type'] == 'Table') {
                 foreach ($bloc['element']['text'][1]['text'] as $tr) {
-                    $markup[] = $this->getObject($tr['text'][1], $current, $current_link);
+                    $markup[] = $this->getObject($tr['text'][1], $locale, $current, $current_link);
                 }
 
                 continue;
@@ -163,7 +171,7 @@ class Indexer
                 foreach ($bloc['element']['text'] as $li) {
                     $li['text'] = $li['text'][0];
 
-                    $markup[] = $this->getObject($li, $current, $current_link);
+                    $markup[] = $this->getObject($li, $locale, $current, $current_link);
                 }
 
                 continue;
@@ -175,14 +183,14 @@ class Indexer
                 if (count($link) > 0) {
                     $current_link = $slug.'#'.$link[1];
                 } else {
-                    $markup[] = $this->getObject($bloc['element'], $current, $current_link);
+                    $markup[] = $this->getObject($bloc['element'], $locale, $current, $current_link);
                 }
             }
         }
 
         $this->index->addObjects($markup);
 
-        echo "Indexed $slug" . PHP_EOL;
+        echo "Indexed {$locale} {$slug}" . PHP_EOL;
     }
 
     /**
@@ -199,15 +207,13 @@ class Indexer
     /**
      * Get the object to be indexed in Algolia.
      *
-     * @param  array  $element
-     * @param  string  $current_h1
-     * @param  string  $current_h2
-     * @param  string  $current_h3
-     * @param  string  $current_h4
-     * @param  string  $current_link
+     * @param array $element
+     * @param string $locale
+     * @param string $current_link
+     *
      * @return array
      */
-    protected function getObject($element, &$current, &$current_link)
+    protected function getObject($element, $locale, &$current, &$current_link)
     {
         $text = [
             'h1' => null,
@@ -234,7 +240,7 @@ class Indexer
         $importance = $this->tags[$element['name']];
 
         return [
-            'objectID'      => $current_link.'-'.md5($element['text']),
+            'objectID'      => $locale.'-'.$current_link.'-'.md5($element['text']),
             'h1'            => $current['h1'],
             'h2'            => $current['h2'],
             'h3'            => $current['h3'],
@@ -248,6 +254,7 @@ class Indexer
             'link'          => $current_link,
             'content'       => $content,
             'importance'    => $importance,
+            '_tags'         => [$locale]
         ];
     }
 

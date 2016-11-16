@@ -2,8 +2,9 @@
 
 namespace App;
 
-use Illuminate\Filesystem\Filesystem;
 use Illuminate\Contracts\Cache\Repository as Cache;
+use Illuminate\Filesystem\Filesystem;
+use Illuminate\Translation\Translator;
 
 class Documentation
 {
@@ -22,16 +23,33 @@ class Documentation
     protected $cache;
 
     /**
+     * @var string
+     */
+    protected $locale;
+
+    /**
+     * @var string
+     */
+    protected $localePath;
+
+    /**
      * Create a new documentation instance.
      *
-     * @param  Filesystem  $files
-     * @param  Cache  $cache
-     * @return void
+     * @param  Filesystem $files
+     * @param  Cache $cache
+     * @param Translator $translator
      */
-    public function __construct(Filesystem $files, Cache $cache)
+    public function __construct(Filesystem $files, Cache $cache, Translator $translator)
     {
         $this->files = $files;
         $this->cache = $cache;
+        $this->locale = $translator->getLocale();
+
+        if ($this->locale == 'ru') {
+            $this->localePath = '';
+        } else {
+            $this->localePath = $this->locale.'/';
+        }
     }
 
     /**
@@ -41,8 +59,8 @@ class Documentation
      */
     public function getIndex()
     {
-        return $this->cache->remember('docs.index', 5, function () {
-            $path = base_path('resources/docs/documentation.md');
+        return $this->cache->remember('docs.index.'.$this->locale, 5, function () {
+            $path = base_path('resources/docs/'.$this->localePath.'documentation.md');
 
             if ($this->files->exists($path)) {
                 return $this->replaceLinks(markdown($this->files->get($path)));
@@ -60,11 +78,11 @@ class Documentation
      */
     public function get($page)
     {
-        return $this->cache->remember('docs.'.$page, 5, function () use ($page) {
-            $path = base_path('resources/docs/'.$page.'.md');
+        return $this->cache->remember('docs.'.$page.'.'.$this->locale, 5, function () use ($page) {
+            $path = base_path('resources/docs/'.$this->localePath.$page.'.md');
 
             if ($this->files->exists($path)) {
-                return $this->replaceLinks(markdown($this->files->get($path)));
+                return $this->replaceLinks($this->locale, markdown($this->files->get($path)));
             }
 
             return null;
@@ -74,10 +92,12 @@ class Documentation
     /**
      * Replace the version place-holder in links.
      *
-     * @param  string  $content
+     * @param string $locale
+     * @param string $content
+     *
      * @return string
      */
-    public static function replaceLinks($content)
+    public static function replaceLinks($locale, $content)
     {
         $content = preg_replace('/href=\"([a-z0-0\-\_]+)\"/i', 'href="/docs/$1"', $content);
 
@@ -93,7 +113,7 @@ class Documentation
     public function sectionExists($page)
     {
         return $this->files->exists(
-            base_path('resources/docs/'.$page.'.md')
+            base_path('resources/docs/'.$this->localePath.$page.'.md')
         );
     }
 }

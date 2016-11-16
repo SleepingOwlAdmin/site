@@ -34,7 +34,7 @@
 	<body>
 		<div class="container">
 			<div class="content">
-				<div class="title">Be right back.</div>
+				<div class="title">@lang('site.error.503')</div>
 			</div>
 		</div>
 	</body>
