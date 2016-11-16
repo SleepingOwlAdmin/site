@@ -15,3 +15,7 @@ function markdown($text)
 
 Route::get('', 'DocsController@showRootPage');
 Route::get('docs/{page?}', 'DocsController@show');
+
+Route::group(['middleware' => 'webhook'], function () {
+    Route::post('webhook.json', 'WebhookController@run');
+});
