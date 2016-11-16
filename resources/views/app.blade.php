@@ -60,7 +60,7 @@
 	<script>
 		var algolia_app_id = '<?php echo config('algolia.connections.main.id', false); ?>';
 		var algolia_search_key = '<?php echo config('algolia.connections.main.search_key', false); ?>';
-		var locale = '<?php trans()->getLocale(); ?>';
+		var locale = '<?php echo trans()->getLocale(); ?>';
 	</script>
 
 	@include('partials.algolia_template')
