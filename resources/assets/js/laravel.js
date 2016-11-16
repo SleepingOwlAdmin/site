@@ -83,7 +83,7 @@ $(function() {
     datasets.push({
       source: function searchAlgolia(query, cb) {
       index.search(query, {
-        hitsPerPage: 5
+        hitsPerPage: 5, tagFilters: [window.locale]
       }, function searchCallback(err, content) {
           if (err) {
             throw err;
@@ -102,7 +102,7 @@ $(function() {
     var old_input = '';
 
     typeahead.on('typeahead:selected', function changePage(e, item) {
-      window.location.href = '/docs/' + item.link;
+      window.location.href = '/docs/' + item._tags[0] + '/' + item.link;
     });
 
     typeahead.on('keyup', function(e) {

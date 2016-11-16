@@ -58,14 +58,14 @@
 	</footer>
 
 	<script>
-		var algolia_app_id      = '<?php echo config('algolia.connections.main.id', false); ?>';
-		var algolia_search_key  = '<?php echo config('algolia.connections.main.search_key', false); ?>';
+		var algolia_app_id = '<?php echo config('algolia.connections.main.id', false); ?>';
+		var algolia_search_key = '<?php echo config('algolia.connections.main.search_key', false); ?>';
+		var locale = '<?php trans()->getLocale(); ?>';
 	</script>
 
 	@include('partials.algolia_template')
 
 	<script src="{{ elixir('assets/js/laravel.js') }}"></script>
-
 
 	<script>
 		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -75,7 +75,6 @@
 
 		ga('create', 'UA-47325178-4', 'auto');
 		ga('send', 'pageview');
-
 	</script>
 
 	<script type="text/javascript">
