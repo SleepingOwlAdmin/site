@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Contracts\LocaleInterface;
 use Illuminate\Contracts\Cache\Repository as Cache;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Translation\Translator;
@@ -33,23 +34,18 @@ class Documentation
     protected $localePath;
 
     /**
-     * Create a new documentation instance.
+     * Documentation constructor.
      *
-     * @param  Filesystem $files
-     * @param  Cache $cache
-     * @param Translator $translator
+     * @param Filesystem $files
+     * @param Cache $cache
+     * @param LocaleInterface $locale
      */
-    public function __construct(Filesystem $files, Cache $cache, Translator $translator)
+    public function __construct(Filesystem $files, Cache $cache, LocaleInterface $locale)
     {
         $this->files = $files;
         $this->cache = $cache;
-        $this->locale = $translator->getLocale();
-
-        if ($this->locale == 'ru') {
-            $this->localePath = '';
-        } else {
-            $this->localePath = $this->locale.'/';
-        }
+        $this->locale = $locale->getCurrent();
+        $this->localePath = $locale->getDocsLocalePrefix();
     }
 
     /**

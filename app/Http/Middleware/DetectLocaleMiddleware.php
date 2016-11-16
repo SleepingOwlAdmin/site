@@ -2,10 +2,26 @@
 
 namespace App\Http\Middleware;
 
+use App\Contracts\LocaleInterface;
 use Closure;
 
 class DetectLocaleMiddleware
 {
+    /**
+     * @var LocaleInterface
+     */
+    protected $locale;
+
+    /**
+     * DetectLocaleMiddleware constructor.
+     *
+     * @param LocaleInterface $locale
+     */
+    public function __construct(LocaleInterface $locale)
+    {
+        $this->locale = $locale;
+    }
+
     /**
      * Handle an incoming request.
      *
@@ -19,9 +35,7 @@ class DetectLocaleMiddleware
         $segments = explode('.', $request->getHttpHost());
         $subdomain = $segments[0];
 
-        $languages = config('app.available_locales');
-
-        if (in_array($subdomain, $languages)) {
+        if (in_array($subdomain, $this->locale->getAvailableLocales())) {
             trans()->setLocale($subdomain);
         }
 

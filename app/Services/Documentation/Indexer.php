@@ -2,6 +2,7 @@
 
 namespace App\Services\Documentation;
 
+use App\Contracts\LocaleInterface;
 use App\CustomParser;
 use App\Documentation;
 use Illuminate\Filesystem\Filesystem;
@@ -74,19 +75,25 @@ class Indexer
     ];
 
     /**
+     * @var LocaleInterface
+     */
+    protected $locale;
+
+    /**
      * Create a new indexer service.
      *
-     * @param  AlgoliaManager  $client
-     * @param  CustomParser  $markdown
-     * @param  Filesystem  $files
-     * @return void
+     * @param  AlgoliaManager $client
+     * @param  CustomParser $markdown
+     * @param  Filesystem $files
+     * @param LocaleInterface $locale
      */
-    public function __construct(AlgoliaManager $client, CustomParser $markdown, Filesystem $files)
+    public function __construct(AlgoliaManager $client, CustomParser $markdown, Filesystem $files, LocaleInterface $locale)
     {
         $this->files = $files;
         $this->client = $client;
         $this->markdown = $markdown;
         $this->index = $client->initIndex(static::$index_name.'_tmp');
+        $this->locale = $locale;
     }
 
     /**
@@ -96,7 +103,7 @@ class Indexer
      */
     public function indexAllDocuments()
     {
-        foreach (config('app.available_locales', ['ru']) as $locale) {
+        foreach ($this->locale->getAvailableLocales() as $locale) {
             $this->indexAllDocumentsForVersion($locale);
         }
 

@@ -10,3 +10,7 @@
 
 <li><a href="http://laravel.su/" target="_blank">Laravel.su</a></li>
 <li><a href="https://laravel.com/" target="_blank">Laravel.com</a></li>
+
+<li class="divider"></li>
+
+@include('partials.switcher')
