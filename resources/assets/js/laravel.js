@@ -102,7 +102,7 @@ $(function() {
     var old_input = '';
 
     typeahead.on('typeahead:selected', function changePage(e, item) {
-      window.location.href = '/docs/' + item._tags[0] + '/' + item.link;
+      window.location.href = '/docs/' + item.link;
     });
 
     typeahead.on('keyup', function(e) {
