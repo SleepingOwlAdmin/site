@@ -24,7 +24,7 @@ class WebhookController extends Controller
 
         $output = null;
         $status = false;
-        if ($script && is_dir($path)) {
+        if ($script && is_dir($path) && file_exists($path.DIRECTORY_SEPARATOR.$script)) {
             exec("cd {$path} && ./{$script}", $output);
             $status = true;
         }
