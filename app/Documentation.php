@@ -63,7 +63,7 @@ class Documentation
             $path = base_path('resources/docs/'.$this->localePath.'documentation.md');
 
             if ($this->files->exists($path)) {
-                return $this->replaceLinks(markdown($this->files->get($path)));
+                return $this->replaceLinks($this->locale, markdown($this->files->get($path)));
             }
 
             return null;
