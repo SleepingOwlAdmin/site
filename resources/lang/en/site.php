@@ -3,7 +3,7 @@
 return [
     'title' => 'SleepingOwl - Administrative interface builder for Laravel.',
     'menu' => [
-        'docs' => 'Docs',
+        'docs' => 'Documentation',
         'demo' => 'Demo',
         'home' => 'Home'
     ],
