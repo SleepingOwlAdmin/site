@@ -29,7 +29,7 @@
 <body class="@yield('body-class', 'docs') language-php">
 	<span class="overlay"></span>
 
-	<nav class="main">
+	<header class="main">
 		<a href="/" class="brand nav-block">
 			{!! svg('logo') !!}
 			<span>SleepingOwlAdmin</span>
@@ -40,15 +40,20 @@
             <input placeholder="@lang('site.search.placeholder')" type="text" v-model="search" id="search-input" v-on:blur="reset" />
         </div>
 
-		<ul class="main-nav" v-if="! search">
-			@include('partials.main-nav')
-			@include('partials.switcher')
-		</ul>
-
         <div class="responsive-sidebar-nav">
 			<a href="#" class="toggle-slide menu-link btn">&#9776;</a>
 		</div>
+	</header>
+
+	<nav class="header-menu">
+		<div class="container">
+			<ul class="main-nav">
+				@include('partials.main-nav')
+				@include('partials.switcher')
+			</ul>
+		</div>
 	</nav>
+
 
 	@yield('content')
 

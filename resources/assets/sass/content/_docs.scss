@@ -12,7 +12,7 @@
 	}
 
 	p {
-		font-size: 14.5px;
+		font-size: 15.5px;
 		line-height: 1.70;
 	}
 
@@ -353,7 +353,6 @@
 }
 
 @media (max-width:780px) {
-
 	.docs article {
 		margin-left: 0px;
 		h1 {
@@ -366,4 +365,10 @@
     .twitter-typeahead .tt-dropdown-menu {
         left: -16px !important;
     }
+
+	.docs article {
+		p {
+			font-size: 14px;
+		}
+	}
 }

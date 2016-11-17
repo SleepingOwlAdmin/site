@@ -4,6 +4,9 @@
 
 .hero {
     background: $color__darker_salmon;
+    background-image: url("/assets/img/hero-bg.png");
+    background-repeat: no-repeat;
+    background-position: center center;
     color: #fff;
 
     p {
@@ -15,4 +18,12 @@
 .github-buttons {
     text-align: center;
     margin-top: 40px;
+}
+
+@media all and (max-width: 600px) {
+    .hero {
+        h1 {
+            font-size: 20px;
+        }
+    }
 }

@@ -1,4 +1,4 @@
-<div class="switcher">
+<li class="switcher">
 	<div class="dropdown">
 		<button class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
 			{{ ucfirst(locale()->getCurrent()) }}
@@ -12,4 +12,4 @@
 			@endforeach
 		</ul>
 	</div>
-</div>
+</li>
