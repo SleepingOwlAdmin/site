@@ -19,7 +19,7 @@ class Webhook
         $hash = $request->header('X-Hub-Signature');
         $body = $request->getContent();
 
-        $calculatedHash = 'sha1=' . hash_hmac('sha1', $body, env('GITHUB_HOOK_SECRET'));
+        $calculatedHash = 'sha1=' . hash_hmac('sha1', $body, config('github.hook_secret'));
 
         if ($hash != $calculatedHash) {
             abort(403);
