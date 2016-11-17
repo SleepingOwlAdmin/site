@@ -1,10 +1,8 @@
 <?php
 
-//Route::get('/', function () {
-//    return view('marketing');
-//});
+Route::get('/', 'HomeController@index');
 
-Route::get('', 'DocsController@showRootPage');
+Route::get('docs/', 'DocsController@showRootPage');
 Route::get('docs/{page?}', 'DocsController@show');
 
 Route::group(['middleware' => 'webhook'], function () {

@@ -68,45 +68,6 @@
 		}
 	}
 
-    &.laracon {
-        background: $color__salmon url('/assets/img/laracon-bg.jpg') center center no-repeat;
-        padding: 60px 0;
-        text-align: center;
-        box-shadow: 0 0 35px rgba(0,0,0,.3);
-        position: relative;
-        z-index: 5;
-		> h1 {
-            color: #fff;
-			margin: 0 0 30px 0;
-			text-align: center;
-		}
-        h2 {
-            font-weight: 400;
-            margin: 40px 0;
-        }
-        .date {
-            font-size: 16px;
-            letter-spacing: .2em;
-            text-transform: uppercase;
-            font-weight: 400;
-        }
-        .btn {
-            background: rgba(255,255,255,.85);
-            border-radius: 60px;
-            color: $color__salmon;
-            margin: 10px;
-            width: 260px;
-            font-size: 18px;
-            &:hover {
-                background: #fff;
-            }
-            em {
-                font-size: 24px;
-                display: block;
-                font-style: normal;
-            }
-        }
-    }
 
 	&.features {
 		padding: 75px 0;
@@ -172,15 +133,6 @@
 		}
 	}
 
-	&.ecosystem {
-		padding: 150px 0 50px;
-		background: url('/assets/img/laravel-tucked.png') center top no-repeat;
-		> h1 {
-			margin: 0 0 20px 0;
-			text-align: center;
-		}
-	}
-
 	.browser-window,
 	.terminal-window {
 		overflow: hidden;
@@ -203,23 +155,6 @@
 		line-height: 1.2;
 		+ p {
 			font-size: 21px;
-		}
-	}
-	.panel.ecosystem {
-		.forge {
-			text-align: center;
-			padding: 0 50px;
-			margin: 50px 0;
-			.screenshot {
-				@include clearfix;
-				float: none;
-				margin-bottom: 25px;
-				max-width: 100%;
-			}
-			.content {
-				@include clearfix;
-				max-width: 100%;
-			}
 		}
 	}
 	.panel.features .blocks .block .text {

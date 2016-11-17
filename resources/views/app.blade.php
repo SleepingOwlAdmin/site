@@ -20,7 +20,7 @@
 		<link rel="canonical" href="{{ url($canonical) }}" />
 	@endif
 
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&amp;subset=cyrillic" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&amp;subset=cyrillic" rel="stylesheet">
 	<link rel="stylesheet" href="{{ elixir('assets/css/laravel.css') }}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
 	<link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -42,6 +42,7 @@
 
 		<ul class="main-nav" v-if="! search">
 			@include('partials.main-nav')
+			@include('partials.switcher')
 		</ul>
 
         <div class="responsive-sidebar-nav">
@@ -57,52 +58,10 @@
 		</ul>
 	</footer>
 
-	<script>
-		var algolia_app_id = '<?php echo config('algolia.connections.main.id', false); ?>';
-		var algolia_search_key = '<?php echo config('algolia.connections.main.search_key', false); ?>';
-		var locale = '<?php echo trans()->getLocale(); ?>';
-	</script>
-
 	@include('partials.algolia_template')
 
 	<script src="{{ elixir('assets/js/laravel.js') }}"></script>
 
-	<script>
-		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-				(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-		ga('create', 'UA-47325178-4', 'auto');
-		ga('send', 'pageview');
-	</script>
-
-	<script type="text/javascript">
-		(function (d, w, c) {
-			(w[c] = w[c] || []).push(function() {
-				try {
-					w.yaCounter40925319 = new Ya.Metrika({
-						id:40925319,
-						clickmap:true,
-						trackLinks:true,
-						accurateTrackBounce:true,
-						webvisor:true
-					});
-				} catch(e) { }
-			});
-
-			var n = d.getElementsByTagName("script")[0],
-				s = d.createElement("script"),
-				f = function () { n.parentNode.insertBefore(s, n); };
-			s.type = "text/javascript";
-			s.async = true;
-			s.src = "https://mc.yandex.ru/metrika/watch.js";
-
-			if (w.opera == "[object Opera]") {
-				d.addEventListener("DOMContentLoaded", f, false);
-			} else { f(); }
-		})(document, window, "yandex_metrika_callbacks");
-	</script>
-	<noscript><div><img src="https://mc.yandex.ru/watch/40925319" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+	@include('partials.metrics')
 </body>
 </html>

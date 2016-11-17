@@ -13,7 +13,12 @@
         padding: 22px 0;
         text-align: center;
         border-bottom: 1px solid rgba(255,255,255,.25);
-        img { margin-left: -20px; }
+
+        svg {
+            fill: #FFFFFF;
+            margin-left: -20px;
+            height: 45px;
+        }
     }
 
     .slide-docs-nav > ul {

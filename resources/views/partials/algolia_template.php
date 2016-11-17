@@ -1,3 +1,9 @@
+<script>
+	var algolia_app_id = '<?php echo config('algolia.connections.main.id', false); ?>';
+	var algolia_search_key = '<?php echo config('algolia.connections.main.search_key', false); ?>';
+	var locale = '<?php echo trans()->getLocale(); ?>';
+</script>
+
 <script id="search_suggestion_template" type="text/template">
 	<div class="autocomplete-wrapper">
 		{{#_highlightResult.h1}}

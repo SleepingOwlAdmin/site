@@ -19,7 +19,9 @@ nav.main {
 		float: left;
 		line-height: 80px;
         padding: 0 30px;
+
 		svg {
+            fill: $color__darker_salmon;
             height: 45px;
             width: 45px;
 		}
@@ -34,23 +36,28 @@ nav.main {
 		margin: 0;
 		padding: 0 20px;
 		float: right;
+
+        > li {
+            display: flex;
+            align-items: center;
+            margin: 0 10px;
+            transition: all .2s ease;
+
+            &.divider {
+              border-left: 1px solid $color__lighter_gray;
+              height: 12px;
+            }
+
+            > a {
+                color: $color__gray;
+                display: block;
+                font-size: 14px;
+                padding: 0 5px;
+
+                &:hover { color: $color__salmon; }
+            }
+        }
     }
-
-    ul.main-nav > li {
-        display: flex;
-        align-items: center;
-		margin: 0 15px;
-        transition: all .2s ease;
-    }
-
-    ul.main-nav > li > a {
-        color: $color__gray;
-        display: block;
-		font-size: 14px;
-		padding: 0 10px;
-
-        &:hover { color: $color__salmon; }
-	}
 
     ul.main-nav > li > a.dropdown-toggle { white-space: nowrap; }
 
@@ -88,7 +95,6 @@ nav.main {
         display: flex;
         align-items: center;
         padding: 0 15px;
-        border-left: 1px solid $color__lighter_gray;
 
         .dropdown-menu {
 			border-radius: 3px;
