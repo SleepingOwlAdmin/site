@@ -23,7 +23,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&amp;subset=cyrillic" rel="stylesheet">
 	<link rel="stylesheet" href="{{ elixir('assets/css/laravel.css') }}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
-	<link rel="icon" type="image/x-icon" href="favicon.ico">
+	<link rel="icon" type="image/x-icon" href="/favicon.ico">
 </head>
 
 <body class="@yield('body-class', 'docs') language-php">
