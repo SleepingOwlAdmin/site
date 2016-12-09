@@ -1,7 +1,7 @@
 var elixir = require('laravel-elixir');
 
 elixir(function(mix) {
-    mix.sass('laravel.scss', 'public/assets/css');
+    mix.sass('app.scss', 'public/assets/css');
 
     mix.scripts(
         [
@@ -13,11 +13,11 @@ elixir(function(mix) {
             'plugins/typeahead.js',
             'plugins/hogan.js',
             'plugins/mousetrap.js',
-            'laravel.js'
+            'app.js'
         ],
-        'public/assets/js/laravel.js',
+        'public/assets/js/app.js',
         'resources/assets/js/'
     );
 
-    mix.version(['assets/css/laravel.css', 'assets/js/laravel.js']);
+    mix.version(['assets/css/app.css', 'assets/js/app.js']);
 });

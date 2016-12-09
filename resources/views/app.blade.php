@@ -10,9 +10,9 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>{{ isset($title) ? $title . ' - ' : null }} @lang('site.title')</title>
+	<title>{{ isset($title) ? $title . ' - ' : null }} @lang('site.title.meta')</title>
 	<meta name="author" content="butschster">
-	<meta name="description" content="@lang('site.title')">
+	<meta name="description" content="@lang('site.title.meta')">
 	<meta name="keywords" content="laravel, php, framework, admin">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -21,7 +21,7 @@
 	@endif
 
 	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&amp;subset=cyrillic" rel="stylesheet">
-	<link rel="stylesheet" href="{{ elixir('assets/css/laravel.css') }}">
+	<link rel="stylesheet" href="{{ elixir('assets/css/app.css') }}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
 	<link rel="icon" type="image/x-icon" href="/favicon.ico">
 </head>
@@ -45,8 +45,8 @@
 		</div>
 	</header>
 
-	<div class="container">
-		<nav class="header-menu">
+	<div class="header-menu-container">
+		<nav class="container header-menu">
 			<ul class="main-nav">
 				@include('partials.main-nav')
 				@include('partials.switcher')
@@ -64,7 +64,7 @@
 
 	@include('partials.algolia_template')
 
-	<script src="{{ elixir('assets/js/laravel.js') }}"></script>
+	<script src="{{ elixir('assets/js/app.js') }}"></script>
 
 	@include('partials.metrics')
 </body>

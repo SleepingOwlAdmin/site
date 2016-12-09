@@ -1,15 +1,22 @@
-
 // Colors //
 
-$color__salmon:         #2b90b3;
-$color__darker_salmon:  #007da8;
-$color__faint:          #f0f2f1;
-$color__gray:           #525252;
-$color__light_gray:     #aeaeae;
-$color__lighter_gray:   #dee0df;
-$color__teal:           #27b4a8;
+$color__salmon: #2b90b3;
+$color__darker_salmon: #007da8;
+$color__faint: #f0f2f1;
+$color__gray: #525252;
+$color__light_gray: #aeaeae;
+$color__lighter_gray: #dee0df;
+$color__teal: #27b4a8;
 
 // Fonts //
 
-$font:         'Roboto', sans-serif;
-$font_alt:     'Roboto', sans-serif;
+$font: 'Roboto', sans-serif;
+$font_alt: 'Roboto', sans-serif;
+
+$btn-primary-color: #f0f2f1;
+$btn-primary-bg: #2b90b3;
+$btn-primary-border: #2b90b3;
+
+$border-radius-base: 0 !default;
+$border-radius-large: 0 !default;
+$border-radius-small: 0 !default;

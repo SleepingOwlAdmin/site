@@ -62,7 +62,6 @@ header.main {
     padding:     0 15px;
 
     .dropdown-menu {
-      border-radius: 3px;
       min-width:     75px;
       right:         0;
       left:          auto;
@@ -86,6 +85,10 @@ header.main {
   }
 }
 
+.header-menu-container {
+  border-bottom: 1px solid $color__lighter_gray;
+}
+
 nav.header-menu {
   @include clearfix;
 
@@ -94,7 +97,6 @@ nav.header-menu {
   padding:       0;
   height:        80px;
   width:         100%;
-  border-bottom: 1px solid $color__lighter_gray;
 
   ul.main-nav {
     font-family: $font_alt;
@@ -102,7 +104,7 @@ nav.header-menu {
     display:     block;
     width:       100%;
     margin:      0;
-    padding:     0 20px;
+    padding:     0;
 
     > li {
       margin:  12px 10px 0;

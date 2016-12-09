@@ -1,0 +1,17 @@
+form.yandex-donate {
+  padding: 20px 0 50px;
+
+  .input-sum {
+    width: 260px;
+    text-align: right;
+    height: 100px;
+    padding: 20px;
+    font-size: 80px;
+  }
+}
+
+@media (max-width: 765px) {
+  form.yandex-donate {
+    padding: 0;
+  }
+}
