@@ -5,7 +5,8 @@ return [
     'menu' => [
         'docs' => 'Документация',
         'demo' => 'Демо',
-        'home' => 'Домой'
+        'home' => 'Домой',
+        'donate' => 'Donate'
     ],
     'search' => [
         'placeholder' => 'Поиск по документации',

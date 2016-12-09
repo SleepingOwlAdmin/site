@@ -45,15 +45,14 @@
 		</div>
 	</header>
 
-	<nav class="header-menu">
-		<div class="container">
+	<div class="container">
+		<nav class="header-menu">
 			<ul class="main-nav">
 				@include('partials.main-nav')
 				@include('partials.switcher')
 			</ul>
-		</div>
-	</nav>
-
+		</nav>
+	</div>
 
 	@yield('content')
 
