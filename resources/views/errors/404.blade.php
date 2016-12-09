@@ -8,10 +8,10 @@ the-404
 	
 	<div class="contain">
 		<div class="media">
-			<img src="/assets/img/lamp-post.jpg">
+			<img src="/assets/img/404.jpg" style="max-width:200px !important;">
 		</div>
 		<div class="content">
-			<h1>@lang('site.error.404')</h1>
+			<h1>@lang('site.error.404.fact'.rand(1,10))</h1>
 		</div>
 	</div>
 
