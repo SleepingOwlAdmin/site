@@ -32,6 +32,6 @@ return [
             'fact9' => 'Barn Owls swallow their prey whole—skin, bones, and all—and they eat up to 1,000 mice each year.',
             'fact10' => 'Northern Saw-whet Owls can travel long distances over large bodies of water. One showed up 70 miles from shore near Montauk, New York.',
         ],
-        '503' => 'Мы скоро вернемся.' // Be right back.
+        '503' => 'Be right back.'
     ],
 ];
