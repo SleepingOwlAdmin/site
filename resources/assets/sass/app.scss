@@ -6,6 +6,7 @@
 @import "core/mixins";            // utilities
 
 // Bootstrap
+$icon-font-path: "/assets/fonts/bootstrap/";
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
 @import "core/base";              // base helpers and typographical styles

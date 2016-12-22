@@ -1,9 +1,14 @@
 <li><a href="{{ route('docs') }}">@lang('site.menu.docs')</a></li>
-<li><a href="http://demo.sleepingowladmin.ru/" target="_blank">@lang('site.menu.demo')</a></li>
+
+<li>
+    <a href="{{ route('donate') }}" style="background-color: red; color: #fff; padding: 3px 8px">
+        <i class="glyphicon glyphicon-heart" style="font-size: 13px;"></i>
+        @lang('site.menu.donate')
+    </a>
+</li>
 
 <li class="divider"></li>
-
-<li><a href="{{ route('donate') }}">@lang('site.menu.donate')</a></li>
+<li><a href="http://demo.sleepingowladmin.ru/" target="_blank">@lang('site.menu.demo')</a></li>
 <li><a href="https://github.com/LaravelRUS/SleepingOwlAdmin/issues" target="_blank">@lang('site.menu.support')</a></li>
 
 <li class="divider"></li>
@@ -17,7 +22,7 @@
     <ul class="dropdown-menu" role="menu">
         <li><a href="https://github.com/LaravelRUS/SleepingOwlAdmin" target="_blank">GitHub</a></li>
         <li><a href="https://github.com/SleepingOwlAdmin/demo" target="_blank">GitHub Demo</a></li>
-        <li><a href="https://github.com/SleepingOwlAdmin/docs" target="_blank">GitHub Doc</a></li>
+        <li><a href="https://github.com/SleepingOwlAdmin/docs" target="_blank">GitHub Docs</a></li>
         <li class="divider"></li>
         <li><a href="https://gitter.im/LaravelRUS/SleepingOwlAdmin" target="_blank">@lang('site.menu.chat')</a></li>
         <li><a href="https://vk.com/sleepingowladm" target="_blank">@lang('site.menu.vk')</a></li>

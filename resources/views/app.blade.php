@@ -56,11 +56,13 @@
 
 	@yield('content')
 
+	{{--
 	<footer class="main">
 		<ul>
 			@include('partials.main-nav')
 		</ul>
 	</footer>
+	--}}
 
 	@include('partials.algolia_template')
 

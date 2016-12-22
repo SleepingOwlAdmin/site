@@ -50,8 +50,8 @@ $(function() {
 
   // gheading links
   $('.docs-wrapper').find('a[name]').each(function () {
-    var anchor = $('<a href="#' + this.name + '"/>');
-    $(this).parent().next('h2').wrapInner(anchor);
+    var anchor = $('<a href="#' + this.name + '" />');
+    $(this).parent().next('h2, h3, h4').wrapInner(anchor);
   });
 
   Mousetrap.bind('/', function(e) {

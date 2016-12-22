@@ -52,21 +52,32 @@
     font-size:   30px;
     font-weight: 400;
     margin-top:  55px;
-    position:    relative;
+  }
+
+  h2, h3 {
+    a,
+    a:hover {
+      color: $color__gray;
+    }
+  }
+
+  h2, h3, h4 {
+    position: relative;
 
     a,
     a:hover {
-      color:           $color__gray;
       text-decoration: none;
     }
+
     a:before {
-      content:     "#";
-      margin-left: -25px;
+      font-family: 'Glyphicons Halflings';
+      content:     "\e144";
+      margin-left: -15px;
       position:    absolute;
-      font-size:   28px;
-      top:         5px;
-      color:       $color__salmon;
+      font-size:   12px;
+      bottom:      8px;
       opacity:     .6;
+      color:       $color__salmon;
     }
   }
 
@@ -77,9 +88,16 @@
   }
 
   h4 {
-    font-size:   16px;
+    font-size:   18px;
     font-weight: 700;
     margin-top:  35px;
+  }
+
+
+  h3, h4 {
+    code {
+      font-size: 18px !important;
+    }
   }
 
   a {
