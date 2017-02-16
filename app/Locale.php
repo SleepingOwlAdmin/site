@@ -43,11 +43,7 @@ class Locale implements LocaleInterface
      */
     public function getDocsLocalePrefix()
     {
-        if ($this->getCurrent() == 'ru') {
-            return '';
-        }
-
-        return  $this->getCurrent().'/';
+        return $this->getCurrent().'/';
     }
 
     /**

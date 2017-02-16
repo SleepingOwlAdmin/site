@@ -119,11 +119,7 @@ class Indexer
      */
     public function indexAllDocumentsForVersion($locale)
     {
-        if($locale != 'ru') {
-            $localPath = base_path('resources/docs/'.$locale.'/');
-        } else {
-            $localPath = base_path('resources/docs/');
-        }
+        $localPath = base_path('resources/docs/'.$locale.'/');
         
         foreach ($this->files->files($localPath) as $path) {
             if (! in_array(basename($path, '.md'), $this->noIndex)) {
