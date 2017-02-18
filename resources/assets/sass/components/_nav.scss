@@ -144,6 +144,22 @@ nav.header-menu {
   }
 }
 
+#go-top {
+  position: fixed;
+  bottom: 15px;
+  right: 10px;
+  cursor:pointer;
+  display:none;
+  width: 48px;
+  height: 78px;
+  background: #c0c0c0;
+  border-radius: 4px;
+}
+
+#go-top:hover {
+  background: #2b90b3;
+}
+
 .responsive-sidebar-nav {
   padding:     0 15px;
   display:     none;
